@@ -1,0 +1,47 @@
+<html>
+
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+  <script src="https://cdn.rawgit.com/showdownjs/showdown/1.7.4/dist/showdown.min.js"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="wrapper">
+    <div id="message_window">
+      <section>
+        <div id="message_list">
+          <div id="message_template">
+            <div class="message {{message.type}}">
+              {{#if message.isTyping}}
+              {{/if}}
+              {{{message.html}}}
+
+              {{#if message.open_link}}
+              <a href="{{{message.open_link}}}" target="_blank" class="button_message">{{#if
+                message.link_title}}{{message.link_title}}{{else}}{{message.open_link}}{{/if}}</a>
+              {{/if}}
+            </div>
+            {{#message.files}}
+            
+            {{/message.files}}
+          </div>
+        </div>
+      </section>
+      <div id="message_replies" class="chatbox__messages">
+        <div class="messages__item">
+        </div>
+      </div>
+      <footer>
+        <form onsubmit="Botkit.send(Botkit.input.value, event)" class="chatbox__footer">
+          <input type="text" autocomplete="off" id="messenger_input" placeholder="...أكتب هنا" />
+          <button type="submit" style="color: white !important;">أرسل</button>
+        </form>
+      </footer>
+    </div>
+  </div>
+  <script src="/client.js"></script>
+</body>
+
+</html>
